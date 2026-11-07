@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GLASS-IDEAL_VITRAJ</title>
+<style>
+:root{--bg:#0b0b0b;--card:#161412;--gold:#d4af37;--gold2:#f3d77a;--tx:#f2ead3;--mut:#9a8f70;--bd:#3a3220;--red:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}html,body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+#app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:76px}
+.top{position:sticky;top:0;z-index:5;background:linear-gradient(#000,#14110a);border-bottom:1px solid var(--gold);padding:12px;text-align:center;font-weight:800;letter-spacing:2px;color:var(--gold);font-size:17px}
+.wrap{padding:12px}.btn{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#000;border:0;border-radius:10px;padding:11px 16px;font-weight:700;cursor:pointer;font-size:15px}
+.btn.o{background:none;border:1px solid var(--gold);color:var(--gold)}.btn.r{background:var(--red);color:#fff}.btn.w{width:100%}
+input,select,textarea{width:100%;background:#0f0e0c;border:1px solid var(--bd);color:var(--tx);border-radius:10px;padding:11px;margin:5px 0;font-size:15px}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}label{font-size:13px;color:var(--mut)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 12px;scrollbar-width:none}.chip{white-space:nowrap;padding:7px 13px;border:1px solid var(--bd);border-radius:20px;color:var(--mut);cursor:pointer;font-size:13px}
+.chip.on{background:var(--gold);color:#000;border-color:var(--gold);font-weight:700}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pc{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;position:relative}
+.pc .im{height:110px;display:flex;align-items:center;justify-content:center;font-size:48px;background:radial-gradient(#2a2410,#0f0e0c);cursor:pointer}
+.pc img{width:100%;height:110px;object-fit:cover}.pc .in{padding:8px 10px 12px}.pc b{font-size:13px;display:block}
+.pr{color:var(--gold);font-weight:700;margin-top:3px}.ok{color:#5fcf80;font-size:12px}.no{color:#e0675a;font-size:12px}
+.plus{position:absolute;right:8px;bottom:8px;width:34px;height:34px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--gold2),var(--gold));font-size:22px;font-weight:700;cursor:pointer}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;display:flex;background:#000;border-top:1px solid var(--gold);padding:6px 0 calc(6px + env(safe-area-inset-bottom,0px));z-index:6}
+.nav div{flex:1;text-align:center;font-size:11px;color:var(--mut);cursor:pointer;position:relative}.nav div.on{color:var(--gold)}.nav svg{display:block;margin:0 auto 2px;width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8}
+.bdg{position:absolute;top:-4px;left:56%;background:var(--red);color:#fff;border-radius:10px;font-size:10px;padding:1px 5px}
+.row{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:8px;margin-bottom:8px}
+.row .im{width:56px;height:56px;border-radius:8px;background:#221d0e;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden}.row img{width:100%;height:100%;object-fit:cover}
+.row .f{flex:1;font-size:13px}.q{display:flex;align-items:center;gap:8px}.q button{width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);background:none;color:var(--gold);font-size:17px}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}td,th{border:1px solid var(--bd);padding:6px;text-align:left}th{background:#1d1808;color:var(--gold)}
+.modal{position:fixed;inset:0;background:#000c;z-index:20;display:flex;align-items:flex-end;justify-content:center}.mb{background:#14110a;border-top:2px solid var(--gold);border-radius:18px 18px 0 0;padding:16px;width:100%;max-width:480px;max-height:90vh;overflow:auto}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:10px;font-size:13px}.g{color:var(--gold)}.m{color:var(--mut)}
+#load{position:fixed;inset:0;background:#000;z-index:99;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s}
+.ring{width:70px;height:70px;border:3px solid #2a2410;border-top-color:var(--gold);border-radius:50%;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+.av{width:96px;height:96px;border-radius:50%;border:2px solid var(--gold);margin:8px auto;display:flex;align-items:center;justify-content:center;font-size:42px;background:#221d0e;overflow:hidden;cursor:pointer}.av img{width:100%;height:100%;object-fit:cover}
+.pay{display:flex;gap:8px}.pay div{flex:1;text-align:center;padding:10px;border:1px solid var(--bd);border-radius:10px;cursor:pointer}.pay div.on{border-color:var(--gold);color:var(--gold);background:#1d1808}
+</style></head><body>
+<div id="load"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 2v20M3 7l18 10M21 7L3 17"/></svg><div class="g" style="font-weight:800;letter-spacing:3px">GLASS-IDEAL_VITRAJ</div><div class="ring"></div></div>
+<div id="app"></div><div id="md"></div>
+<script>
+const $=s=>document.querySelector(s),N='GLASS-IDEAL_VITRAJ';
+const L=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}};
+const S=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const f=n=>Math.round(n).toLocaleString('ru-RU')+" so‘m";
+let users=[],prods=null,orders=[],debts=[],stats={},me=L('me',null),cart=L('c',{}),tab='sotuv',cat='HAMMASI',q='',atab='stat';
+if(!prods){prods=[["BEVILS DB-01",45000,20,'🔷',1,30000],["BEVILS RB-02",52000,15,'🔶',1,35000],["VB-77 Decraled",61000,0,'💠',0,40000],["REGALED SO-5",58000,9,'🔹',1,38000],["Jilka oyna 2mm",90000,30,'🪟',0,60000],["Jilka klassik",85000,12,'🪞',0,55000],["Mat plyonka SF-10",35000,100,'⬜',1,20000],["МАТ shisha SF",40000,60,'◽',0,25000],["Silikon germetik",25000,40,'🧴',0,15000],["Qulf-tutqich",18000,50,'🔩',0,10000]].map((a,i)=>({id:i+1,name:a[0],price:a[1],stock:a[2],ic:a[3],isNew:a[4],cost:a[5],img:''}));S('p',prods)}
+const H={'Content-Type':'application/json'};
+async function getRemote(){try{const r=await fetch('/api/kv',{signal:AbortSignal.timeout(6000)});const a=await r.json(),m={};a.forEach(x=>m[x.k]=x.v);return m}catch(e){return null}}
+const un=(a,b,k)=>{const m=new Map((a||[]).map(x=>[x[k],x]));b.forEach(x=>m.set(x[k],x));return[...m.values()]};
+async function pull(){const m=await getRemote();if(!m)return;if(m.u)users=m.u;if(m.p)prods=m.p;if(m.o)orders=m.o;if(m.d)debts=m.d;if(m.st)stats=m.st;if(!m.p)push()}
+let _t;function push(){clearTimeout(_t);_t=setTimeout(async()=>{const m=await getRemote()||{};users=un(m.u,users,'username');orders=un(m.o,orders,'id');debts=un(m.d,debts,'id');
+ try{await fetch('/api/kv',{method:'POST',headers:H,body:JSON.stringify({u:users,p:prods,o:orders,d:debts,st:stats})})}catch(e){}},300)}
+const save=()=>{S('me',me);S('c',cart);push()};
+function catOf(p){const n=p.name.toUpperCase();if(/^(МАТ|MAT)/.test(n)||/(^|[^A-Z])SF/.test(n))return 'MATOVKALAR';if(/JILKA/.test(n))return 'JILKALAR';if(/(^|[^A-Z])(DB|RB|VB|VE|OYR|SO)([^A-Z]|$)|DECRALED|REGALED|BEVILS/.test(n))return 'BEVILS';return 'AKSESUVARLAR'}
+const unit=p=>catOf(p)=='MATOVKALAR'?'metr':'dona';
+const pim=(p,c)=>p.img?`<img src="${p.img}">`:p.ic;
+const nowS=t=>new Date(t).toLocaleString('ru-RU');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(t){alert(t)}
+function modal(h){$('#md').innerHTML=`<div class="modal" onclick="if(event.target==this)closeM()"><div class="mb">${h}</div></div>`}
+function closeM(){$('#md').innerHTML=''}
+function readImg(file,cb,sz=300){const r=new FileReader();r.onload=e=>{const i=new Image();i.onload=()=>{const k=Math.min(1,sz/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=i.width*k;c.height=i.height*k;c.getContext('2d').drawImage(i,0,0,c.width,c.height);cb(c.toDataURL('image/jpeg',.7))};i.src=e.target.result};r.readAsDataURL(file)}
+const ico={s:'<svg viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M4 9v11h16V9M9 20v-6h6v6"/></svg>',c:'<svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l3 12h11l2-8H6"/></svg>',d:'<svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>',p:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>'};
+const top=(t='')=>`<div class="top">${N}${t?`<div class="m" style="font-size:11px;letter-spacing:1px;font-weight:400">${t}</div>`:''}</div>`;
+
+/* AUTH */
+let reg=false;
+function authView(){
+ $('#app').innerHTML=top()+`<div class="wrap"><h3 class="g" style="text-align:center;margin:14px">${reg?'Akkaunt yaratish':'Kirish'}</h3>
+ <input id="a_u" placeholder="Akkaunt nomi (ism)" autocomplete="username"><input id="a_p" type="password" placeholder="Parol (kamida 6 ta belgi)">
+ ${reg?`<input id="a_n" placeholder="Ism familiya"><input id="a_t" type="tel" placeholder="Telefon raqam +998..."><select id="a_v" onchange="$('#a_ad').style.display=this.value=='Toshkent'?'block':'none'"><option value="">Viloyatni tanlang</option>${['Toshkent','Toshkent viloyati','Samarqand','Buxoro','Andijon','Farg‘ona','Namangan','Qashqadaryo','Surxondaryo','Navoiy','Jizzax','Sirdaryo','Xorazm','Qoraqalpog‘iston'].map(v=>`<option>${v}</option>`).join('')}</select><input id="a_ad" style="display:none" placeholder="Aniq manzil (Toshkent uchun majburiy)">`:''}
+ <button class="btn w" style="margin-top:10px" onclick="${reg?'doReg()':'doLogin()'}">${reg?'Yaratish':'Kirish'}</button>
+ <p style="text-align:center;margin-top:16px" class="m">${reg?'Akkaunt bormi?':'Akkaunt yo‘qmi?'} <a class="g" href="#" onclick="reg=!reg;authView();return false">${reg?'Kirish':'Akkaunt yaratish'}</a></p></div>`}
+async function doLogin(){const u=$('#a_u').value.trim(),p=$('#a_p').value;
+ if(u.toLowerCase()=='admin'||u.toLowerCase()=='islomboy'&&0){const r=await fetch('/api/admin',{method:'POST',headers:H,body:JSON.stringify({user:u,pass:p})}).then(r=>r.json()).catch(()=>({}));if(r.ok){me={admin:1,username:'admin',name:'Admin'};save();return render()}return toast('Admin nomi yoki paroli xato')}
+ const x=users.find(z=>z.username.toLowerCase()==u.toLowerCase()&&z.pass==p);if(!x)return toast('Nom yoki parol xato');me={username:x.username};save();render()}
+function doReg(){const g=i=>$('#'+i).value.trim(),u=g('a_u'),p=$('#a_p').value,n=g('a_n'),t=g('a_t'),v=g('a_v'),ad=g('a_ad');
+ if(!u||p.length<6)return toast('Nom kiriting va parol kamida 6 ta belgi bo‘lsin');
+ if(u.toLowerCase()=='admin'||users.some(z=>z.username.toLowerCase()==u.toLowerCase()))return toast('Bu akkaunt nomi band');
+ if(!n||!/^\+?\d{9,13}$/.test(t.replace(/\s/g,''))||!v)return toast('Ism, telefon va viloyatni to‘ldiring');
+ if(v=='Toshkent'&&!ad)return toast('Toshkent uchun aniq manzil kerak');
+ users.push({username:u,pass:p,name:n,phone:t,region:v,address:ad,photo:'',agreed:false,created:Date.now()});me={username:u};save();render()}
+const U=()=>users.find(z=>z.username==me.username);
+
+/* CLIENT */
+function render(){
+ if(!me)return authView();if(me.admin)return adminView();
+ const u=U();if(!u){me=null;save();return authView()}
+ const cn=Object.values(cart).reduce((a,b)=>a+b,0);
+ let h='';
+ if(tab=='sotuv')h=shop();else if(tab=='savat')h=cartV();else if(tab=='qarz')h=debtV();else h=profV();
+ const nv=(k,l,i,b)=>`<div class="${tab==k?'on':''}" onclick="tab='${k}';render();scrollTo(0,0)">${b?`<span class="bdg">${b}</span>`:''}${ico[i]}${l}</div>`;
+ $('#app').innerHTML=h+`<div class="nav">${nv('sotuv','Sotuv','s')}${nv('savat','Savat','c',cn)}${nv('qarz','Qarzdorlik','d',debts.filter(d=>d.user==u.username&&!d.closed).length)}${nv('prof','Profil','p')}</div>`}
+function shop(){
+ const cats=['YANGILIKLAR','HAMMASI','BEVILS','JILKALAR','MATOVKALAR','AKSESUVARLAR'];
+ let l=prods.filter(p=>(cat=='HAMMASI'||(cat=='YANGILIKLAR'?p.isNew:catOf(p)==cat))&&p.name.toLowerCase().includes(q.toLowerCase()));
+ return top('SOTUV')+`<div class="wrap" style="padding-bottom:0"><input id="sq" placeholder="🔍 Qidiruv..." value="${esc(q)}" oninput="q=this.value;list()"></div>
+ <div class="chips">${cats.map(c=>`<div class="chip ${c==cat?'on':''}" onclick="cat='${c}';render()">${c}</div>`).join('')}</div><div class="wrap grid" id="lst">${cards(l)}</div>`}
+function list(){let l=prods.filter(p=>(cat=='HAMMASI'||(cat=='YANGILIKLAR'?p.isNew:catOf(p)==cat))&&p.name.toLowerCase().includes(q.toLowerCase()));$('#lst').innerHTML=cards(l)}
+const cards=l=>l.length?l.map(p=>`<div class="pc"><div class="im" onclick="detail(${p.id})">${pim(p)}</div><div class="in"><b>${esc(p.name)}</b><div class="pr">${f(p.price)}/${unit(p)}</div>${p.stock>0?`<div class="ok">Mavjud: ${p.stock} ${unit(p)}</div>`:`<div class="no">${esc(p.name)} shu mahsulotdan afsuski qolmadi</div>`}</div>${p.stock>0?`<button class="plus" onclick="add(${p.id})">+</button>`:''}</div>`).join(''):'<p class="m">Mahsulot topilmadi</p>';
+function detail(id){const p=prods.find(x=>x.id==id);modal(`<div class="av" style="width:100%;border-radius:12px;height:200px;font-size:90px">${pim(p)}</div><h3 class="g">${esc(p.name)}</h3><p>${f(p.price)}/${unit(p)} · ${catOf(p)}</p><p class="${p.stock>0?'ok':'no'}">${p.stock>0?'Mavjud: '+p.stock+' '+unit(p):'Afsuski qolmadi'}</p>${p.stock>0?`<button class="btn w" onclick="add(${id});closeM()">Savatga qo‘shish</button>`:''}`)}
+function add(id){const p=prods.find(x=>x.id==id);if((cart[id]||0)>=p.stock)return toast('Omborda shuncha yo‘q');cart[id]=(cart[id]||0)+1;save();render()}
+function chg(id,d){const p=prods.find(x=>x.id==id);let n=(cart[id]||0)+d;if(n>p.stock)return toast('Omborda shuncha yo‘q');if(n<=0)delete cart[id];else cart[id]=n;save();render()}
+const items=()=>Object.keys(cart).map(id=>{const p=prods.find(x=>x.id==id);return p&&{id:p.id,name:p.name,price:p.price,cost:p.cost||0,qty:cart[id],unit:unit(p),p}}).filter(Boolean);
+const tot=()=>items().reduce((a,i)=>a+i.price*i.qty,0);
+let note='';
+function cartV(){const it=items();if(!it.length)return top('SAVAT')+'<div class="wrap m" style="text-align:center;margin-top:60px"><div style="font-size:54px">🛒</div>Savat bo‘sh</div>';
+ return top('SAVAT')+`<div class="wrap">${it.map(i=>`<div class="row"><div class="im">${pim(i.p)}</div><div class="f"><b>${esc(i.name)}</b><div class="g">${f(i.price)}</div><div class="ok">Mavjud: ${i.p.stock}</div></div><div class="q"><button onclick="chg(${i.id},-1)">−</button><b>${i.qty}</b><button onclick="chg(${i.id},1)">+</button></div></div>`).join('')}
+ <table><tr><th>Nomi</th><th>Narx</th><th>Soni</th><th>Summa</th></tr>${it.map(i=>`<tr><td>${esc(i.name)}</td><td>${i.price}</td><td>${i.qty} ${i.unit}</td><td>${i.price*i.qty}</td></tr>`).join('')}<tr><th colspan="3">JAMI</th><th>${tot()}</th></tr></table>
+ <label>Izoh (ism, familiya, so‘z qoldiring)</label><textarea id="nt" rows="2" oninput="note=this.value">${esc(note)}</textarea>
+ <div style="display:flex;gap:10px;margin-top:8px"><button class="btn o" style="flex:1" onclick="debtStart()">QARZGA</button><button class="btn" style="flex:1" onclick="payStart()">TO‘LASH</button></div></div>`}
+function payModal(amount,title,cb){window._cb=cb;window._m='Payme';window._rc='';
+ modal(`<h3 class="g">${title}</h3><p style="margin:8px 0">Summa: <b class="g">${f(amount)}</b></p><div class="pay">${['Payme','Click','Paynet'].map((m,i)=>`<div class="${i?'':'on'}" onclick="window._m='${m}';document.querySelectorAll('.pay div').forEach(e=>e.classList.toggle('on',e==this))">${m}</div>`).join('')}</div>
+ <label>Chek rasmi (majburiy)</label><input type="file" accept="image/*" onchange="readImg(this.files[0],d=>window._rc=d,500)"><button class="btn w" style="margin-top:8px" onclick="if(!window._rc)return toast('Chek rasmini yuklang');window._cb(window._m,window._rc)">To‘lovni tasdiqlash</button>`)}
+function mk(type,method,receipt,paid){const u=U(),it=items(),total=tot(),ts=Date.now(),id=ts;
+ it.forEach(i=>{i.p.stock-=i.qty});
+ orders.push({id,user:u.username,name:u.name,phone:u.phone,region:u.region,address:u.address,items:it.map(({p,...r})=>r),total,type,method,receipt,note,ts,paid});
+ if(type=='debt')debts.push({id,user:u.username,total,paid,note:'',ts,closed:false});
+ const k=new Date(ts).toISOString().slice(0,7),s=stats[k]||(stats[k]={orders:0,sum:0,profit:0});s.orders++;s.sum+=total;s.profit+=it.reduce((a,i)=>a+(i.price-i.cost)*i.qty,0);
+ cart={};note='';save();closeM();tab=type=='debt'?'qarz':'prof';render();toast('Buyurtma qabul qilindi ✅')}
+function payStart(){payModal(tot(),'To‘lov',(m,r)=>mk('paid',m,r,tot()))}
+function debtStart(){const u=U();if(debts.filter(d=>d.user==u.username&&!d.closed).length>=2)return toast('Bir vaqtda maksimum 2 ta qarzdorlik bo‘lishi mumkin');
+ const a=Math.ceil(tot()*.3);modal(`<h3 class="g">Qarz shartlari</h3><p style="margin:10px 0">Bosh 30% (<b class="g">${f(a)}</b>) to‘lov qilasiz, zakazni qabul qilamiz.</p><label style="display:flex;gap:8px;align-items:flex-start;color:var(--tx);font-size:14px"><input type="checkbox" id="ag" style="width:22px;margin:0" onchange="$('#gp').style.display=this.checked?'block':'none'">Ha, roziman. Agarda men 1-2 hafta ichida qarzimni qaytara olmasam, Tashenov Islomboy Sabirbayevich 102 ga telefon qilishiga.</label>
+ <button id="gp" class="btn w" style="display:none;margin-top:12px" onclick="u=U();u.agreed=true;save();payModal(${a},'30% bosh to‘lov',(m,r)=>mk('debt',m,r,${a}))">TO‘LASH</button>`)}
+function debtV(){const u=U(),l=debts.filter(d=>d.user==u.username);
+ return top('QARZDORLIK')+`<div class="wrap">${l.length?l.map(d=>{const r=d.total-d.paid;return`<div class="card"><div class="g">Qarz №${String(d.id).slice(-5)} · ${nowS(d.ts)}</div><p>Jami: ${f(d.total)}<br>To‘langan: ${f(d.paid)}<br><b>Qolgan: ${f(r)}</b> ${d.closed?'<span class="ok">YOPILGAN</span>':''}</p>${d.closed?'':`<input placeholder="Izoh" id="dn${d.id}" value="${esc(d.note)}" oninput="debts.find(x=>x.id==${d.id}).note=this.value;save()"><button class="btn w" onclick="payDebt(${d.id})">TO‘LOV</button>`}</div>`}).join(''):'<p class="m" style="text-align:center;margin-top:50px">Qarzdorlik yo‘q 👍</p>'}</div>`}
+function payDebt(id){const d=debts.find(x=>x.id==id),r=d.total-d.paid;modal(`<h3 class="g">Qarzni to‘lash</h3><label>Summa (qolgan: ${f(r)})</label><input id="da" type="number" value="${r}"><button class="btn w" onclick="const a=Math.min(+$('#da').value,${r});if(!(a>0))return toast('Summani kiriting');payModal(a,'Qarz to‘lovi',(m,rc)=>{d.paid+=a;if(d.paid>=d.total)d.closed=true;orders.push({id:Date.now(),user:d.user,name:U().name,phone:U().phone,region:U().region,items:[],total:a,type:'debtpay',method:m,receipt:rc,ts:Date.now(),paid:a});save();closeM();render()})">Davom etish</button>`)}
+function profV(){const u=U(),my=orders.filter(o=>o.user==u.username).sort((a,b)=>b.ts-a.ts);
+ return top('PROFIL')+`<div class="wrap" style="text-align:center"><div class="av" onclick="$('#ph').click()">${u.photo?`<img src="${u.photo}">`:'👤'}</div><input type="file" id="ph" accept="image/*" hidden onchange="readImg(this.files[0],d=>{U().photo=d;save();render()},200)"><h3 class="g">${esc(u.name)}</h3>
+ <div style="text-align:left;margin-top:10px"><label>Akkaunt: @${esc(u.username)}</label><input id="pn" value="${esc(u.name)}" placeholder="Ism"><input id="pt" value="${esc(u.phone)}" placeholder="Telefon"><input id="pa" value="${esc(u.address||'')}" placeholder="Manzil (${esc(u.region)})"><input id="pp" type="password" placeholder="Yangi parol (ixtiyoriy, 6+)"><button class="btn w" onclick="const x=U();x.name=$('#pn').value;x.phone=$('#pt').value;x.address=$('#pa').value;const p=$('#pp').value;if(p){if(p.length<6)return toast('Parol 6+ belgi');x.pass=p}save();render();toast('Saqlandi')">Saqlash</button>
+ <button class="btn o w" style="margin-top:8px" onclick="me=null;save();render()">Chiqish</button></div>
+ <h3 class="g" style="margin:16px 0 8px;text-align:left">Buyurtmalar tarixi</h3>${my.length?my.map(o=>`<div class="card" style="text-align:left">${nowS(o.ts)}<br><b>${f(o.total)}</b> · ${o.type=='paid'?'<span class="ok">To‘langan</span>':o.type=='debt'?'<span class="g">Qarzga</span>':'Qarz to‘lovi'}<br><span class="m">${o.items.map(i=>esc(i.name)+' ×'+i.qty).join(', ')}</span></div>`).join(''):'<p class="m">Hali buyurtma yo‘q</p>'}</div>`}
+
+/* ADMIN */
+function adminView(){
+ const tb=(k,l)=>`<div class="chip ${atab==k?'on':''}" onclick="atab='${k}';render()">${l}</div>`;
+ const k=new Date().toISOString().slice(0,7),td=new Date().toDateString();let h='';
+ if(atab=='stat'){h=`<h3 class="g">Oylik foyda</h3>${Object.keys(stats).sort().reverse().map(m=>`<div class="card"><b class="g">${m}</b><br>Zakazlar: ${stats[m].orders}<br>Summa: ${f(stats[m].sum)}<br>Foyda: <b class="ok">${f(stats[m].profit)}</b><br><button class="btn r" style="padding:5px 10px;margin-top:6px" onclick="if(confirm('O‘chirilsinmi?')){delete stats[m];save();render()}">O‘chirish</button></div>`).join('')||'<p class="m">Hali yo‘q</p>'}`}
+ if(atab=='users'){h=`<h3 class="g">Foydalanuvchilar: ${users.length}</h3>`+users.map(u=>`<div class="card"><b class="g">${esc(u.name)}</b> (@${esc(u.username)})<br>📞 ${esc(u.phone)}<br>📍 ${esc(u.region)} ${esc(u.address||'')}<br>Qarz roziligi: ${u.agreed?'<span class="ok">ha</span>':'<span class="no">yo‘q</span>'}<br>Ro‘yxatdan: ${nowS(u.created)}<br>Buyurtmalar: ${orders.filter(o=>o.user==u.username&&o.type!='debtpay').length}</div>`).join('')}
+ if(atab=='ord'||atab=='today'){const l=orders.filter(o=>atab=='ord'||new Date(o.ts).toDateString()==td).sort((a,b)=>b.ts-a.ts);h=`<h3 class="g">${atab=='ord'?'Zakazlar tarixi':'Bugungi zakazlar'}: ${l.length}</h3>`+l.map(o=>`<div class="card"><b class="g">${nowS(o.ts)}</b><br>${esc(o.name)} · ${esc(o.phone)} · ${esc(o.region)} ${esc(o.address||'')}<br>${o.items.map(i=>esc(i.name)+' ×'+i.qty+' '+i.unit).join(', ')||'Qarz to‘lovi'}<br><b>${f(o.total)}</b> (to‘langan: ${f(o.paid)}) · ${o.type=='paid'?'<span class="ok">Toliq</span>':o.type=='debt'?'<span class="no">QARZGA</span>':'Qarz to‘lovi'} · ${o.method||''}${o.note?`<br>Izoh: ${esc(o.note)}`:''}<br>${o.receipt?`<img src="${o.receipt}" style="width:90px;margin-top:6px;border-radius:8px;cursor:pointer" onclick="modal('<img src=&quot;'+this.src+'&quot; style=&quot;width:100%&quot;>')">`:''}</div>`).join('')}
+ if(atab=='prod'){h=`<div style="display:flex;justify-content:space-between"><h3 class="g">Mahsulotlar: ${prods.length}</h3><button class="btn" onclick="newP()">+ Yangi</button></div>`+prods.map(p=>`<div class="row"><div class="im">${pim(p)}</div><div class="f"><b>${esc(p.name)}</b><br><span class="m">${catOf(p)}</span><br><input type="number" style="width:46%" value="${p.price}" onchange="prods.find(x=>x.id==${p.id}).price=+this.value;save()"> <input type="number" style="width:40%" value="${p.stock}" onchange="prods.find(x=>x.id==${p.id}).stock=+this.value;save()"></div><div><button class="btn o" style="padding:6px" onclick="prods=prods.filter(x=>x.id!=${p.id});save();render()">🗑</button></div></div>`).join('')+'<p class="m">Chapda narx, o‘ngda soni</p>'}
+ $('#app').innerHTML=top('ADMIN')+`<div class="chips">${tb('stat','Foyda')}${tb('today','Bugun')}${tb('ord','Zakazlar')}${tb('prod','Produktlar')}${tb('users','Foydalanuvchilar')}</div><div class="wrap">${h}<button class="btn o w" style="margin-top:14px" onclick="me=null;save();render()">Chiqish</button></div>`}
+function newP(){modal(`<h3 class="g">Yangi tovar</h3><input id="n1" placeholder="Nomi"><input id="n2" type="number" placeholder="Narxi"><input id="n3" type="number" placeholder="Tannarx"><input id="n4" type="number" placeholder="Soni"><input type="file" id="n5" accept="image/*"><label><input type="checkbox" id="n6" style="width:auto"> Yangilik</label><button class="btn w" onclick="const go=img=>{prods.push({id:Date.now(),name:$('#n1').value,price:+$('#n2').value,cost:+$('#n3').value,stock:+$('#n4').value,ic:'📦',img,isNew:$('#n6').checked});save();closeM();render()};if(!$('#n1').value)return toast('Nomi kerak');const fl=$('#n5').files[0];fl?readImg(fl,go):go('')">Qo‘shish</button>`)}
+
+render();pull().then(()=>{const a=document.activeElement;if(!a||a.tagName!='INPUT')render()});setTimeout(()=>{const l=$('#load');l.style.opacity=0;setTimeout(()=>l.remove(),500)},1400);
+try{window.Telegram&&Telegram.WebApp&&(Telegram.WebApp.ready(),Telegram.WebApp.expand())}catch(e){}
+</script></body></html>
